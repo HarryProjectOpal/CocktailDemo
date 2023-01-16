@@ -1,0 +1,61 @@
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+enableFeaturePreview("VERSION_CATALOGS")
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    versionCatalogs {
+        create("libs") {
+            /** Core **/
+            alias("core").to("androidx.core","core-ktx").version("1.9.0")
+            alias("appcompat").to("androidx.appcompat","appcompat").version("1.5.1")
+            alias("material").to("com.google.android.material","material").version("1.7.0")
+            bundle("core-bundle",["core","appcompat","material"])
+            /** Retrofit **/
+            version("retrofit", "2.9.0")
+            alias("retrofit").to("com.squareup.retrofit2", "retrofit").versionRef("retrofit")
+            alias("converter-gson").to("com.squareup.retrofit2","converter-gson").version("2.7.1")
+            alias("logging-interceptor").to("com.squareup.okhttp3","logging-interceptor").version("4.4.0")
+            bundle("retrofit-bundle",["retrofit","converter-gson", "logging-interceptor"])
+            /** Compose **/
+            version("compose", "1.3.1")
+            alias("compose-ui").to("androidx.compose.ui", "ui").versionRef("compose")
+            alias("compose-material").to("androidx.compose.material", "material").versionRef("compose")
+            alias("compose-tooling").to("androidx.compose.ui", "ui-tooling").versionRef("compose")
+            alias("compose-preview").to("androidx.compose.ui", "ui-tooling-preview").versionRef("compose")
+            alias("compose-livedata").to("androidx.compose.runtime", "runtime-livedata").version("1.2.0")
+            alias("compose-activity").to("androidx.activity", "activity-compose").version("1.6.1")
+            alias("glide-image-loader").to("com.github.skydoves", "landscapist-glide").version("2.1.1")
+            bundle("compose-bundle",["compose-ui","compose-material","compose-tooling", "compose-preview", "compose-livedata", "compose-activity", "glide-image-loader"])
+            /** Koin **/
+            alias("koin").to("io.insert-koin", "koin-android").version("3.1.2")
+            /** Lifecycle **/
+            version("lifecycle", "2.5.1")
+            alias("lifecycle-viewmodel").to("androidx.lifecycle", "lifecycle-viewmodel-ktx").versionRef("lifecycle")
+            alias("lifecycle-runtime").to("androidx.lifecycle", "lifecycle-runtime-ktx").versionRef("lifecycle")
+            alias("lifecycle-livedata").to("androidx.lifecycle", "lifecycle-livedata-ktx").versionRef("lifecycle")
+            bundle("lifecycle-bundle",["lifecycle-viewmodel","lifecycle-runtime", "lifecycle-livedata"])
+            /** Unit Testing **/
+            alias("junit").to("junit", "junit").version("4.13.2")
+            alias("kotlin-coroutines-test").to("org.jetbrains.kotlinx", "kotlinx-coroutines-test").version("1.6.4")
+            alias("core-test").to("androidx.arch.core", "core-testing").version("2.1.0")
+            bundle("testing-unit-bundle",["junit","kotlin-coroutines-test", "core-test"])
+            /** UI Testing **/
+            alias("android-junit").to("androidx.test.ext", "junit").version("1.1.5")
+            alias("compose-test").to("androidx.compose.ui", "ui-test-junit4").version("1.3.3")
+            alias("espresso").to("androidx.test.espresso", "espresso-core").version("3.5.1")
+            bundle("testing-ui-bundle",["android-junit","compose-test", "espresso"])
+        }
+    }
+}
+rootProject.name = "Cocktail Demo"
+include ':app'

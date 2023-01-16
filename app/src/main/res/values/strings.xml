@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Cocktail Demo</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="content_desc_search">Search</string>
+    <string name="content_desc_clear">Clear</string>
+</resources>
